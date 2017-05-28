@@ -3,6 +3,13 @@
 
 It uses a Recurrent Neural Network (RNN) to perform deep learning by listening to classical compositions by Mozart, Beethoven, and Chopin in order to generate authentic, classical compositons in the style of the three composers. The Keras API was used in developing the network model, using TensorFlow as the backend. Training is currently performed on 11 pieces (2 Beethoven, 3 Chopin, 6 Mozart). The training process (500 epochs) takes approximately 10 hours on a CPU (specs below).
 
+<h3>APIs used</h3>
+<ul>
+<li>Keras (https://keras.io/)</li>
+<li>Numpy (https://docs.scipy.org/doc/)</li>
+<li>Mido (https://github.com/olemb/mido)</li>
+</ul>
+
 <h3>CPU Specs:</h3>
 <ul>
 <li>Dell XPS 7500 Desktop</li>
