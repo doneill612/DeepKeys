@@ -22,9 +22,9 @@ It uses a Recurrent Neural Network (RNN) to perform deep learning by listening t
 <ul>
 <li>2 LSTM (Long-Short Term Memory) layers w/ Dropout between ([0.2, 0.5] respectively)</li>
 <li>1 FC (Fully-Connected) layer</li>
-<li>Sigmoid Activation</li>
+<li>Linear Activation at output</li>
 <li>MSE loss function</li>
-<li>RMSProp optimizer (learning rate = 0.01)</li>
+<li>RMSProp optimizer (learning rate = 0.005)</li>
 </ul>
 
 There is much work to be done, but features include:
