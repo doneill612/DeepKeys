@@ -6,8 +6,9 @@ It uses a Recurrent Neural Network (RNN) to perform deep learning by listening t
 <h3>APIs used</h3>
 <ul>
 <li>Keras (https://keras.io/)</li>
-<li>Numpy (https://docs.scipy.org/doc/)</li>
+<li>numpy (https://docs.scipy.org/doc/)</li>
 <li>Mido (https://github.com/olemb/mido)</li>
+<li>music21 (http://web.mit.edu/music21/)</li>
 </ul>
 
 <h3>CPU Specs:</h3>
