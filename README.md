@@ -1,5 +1,4 @@
 # DeepKeys
-<h1>DeepKeys</h1> 
 <h2>DeepKeys is a basic AI built to compose classical music in the styles of Mozart, Chopin, and Beethoven.</h2>
 
 It uses a Recurrent Neural Network (RNN) to perform deep learning by listening to classical compositions by Mozart, Beethoven, and Chopin in order to generate authentic, classical compositons in the style of the three composers. The Keras API was used in developing the network model, using TensorFlow as the backend. Training is currently performed on 11 pieces (2 Beethoven, 3 Chopin, 6 Mozart). The training process (500 epochs) takes approximately 10 hours on a CPU (specs below).
