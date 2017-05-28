@@ -7,7 +7,7 @@ import numpy as np
 
 
 """
-Builds and trains a sequential LSTM network.
+Builds, trains, and saves a sequential LSTM network.
 Each LSTM layer is followed by a dropout - 0.2 between the two LSTMs, 0.5 between the second LSTM and Dense layer
 Layers use softmax activation and the loss is a categorical cross-entropy function.
 
@@ -41,7 +41,9 @@ def build_trained_network(X, y, n_epochs=25):
     print("Network built.")
     print("Training network...")
     model.fit(X, y, batch_size=128, epochs=n_epochs, verbose=1)
-    print("Network trained.")
+    print("Network trained. Saving...")
+    model.save('savedmodels/model_{}_epochs_111.h5'.format(n_epochs))
+    print("Saved.")
     return model
 
 
@@ -55,6 +57,8 @@ max_t: the longest note time span (used for scaling)
 @:return the seed prediction
 """
 def predict(model, seed, max_t, n_epochs = 25):
+
+    print("Generating...")
     prediction = list()
     _seed = seed
     _seed = np.expand_dims(_seed, axis=0)
@@ -82,4 +86,5 @@ def predict(model, seed, max_t, n_epochs = 25):
         if note[2] < 0:
             note[2] = 0
 
+    print("Done!")
     return prediction

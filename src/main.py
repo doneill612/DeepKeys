@@ -21,8 +21,11 @@ for i in range(len(notes) - NOTE_MEMORY):
 
 seed = notes[0:NOTE_MEMORY]
 
-model = network.build_trained_network(X, y, n_epochs=400)
+model = network.build_trained_network(X, y, n_epochs=3600)
 
-prediction = network.predict(model, seed, max_t, n_epochs=400)
+prediction = network.predict(model, seed, max_t, n_epochs=3600)
 
-utils.save_new_song(prediction, 1)
+file_name = 'sample_song2'
+
+file_path = utils.save_new_song(prediction, file_name)
+utils.scale_song(file_path, 1.5)
