@@ -25,24 +25,25 @@ y: labels
 @:return the trained neural network
 
 """
-def build_trained_network(X, y):
+def build_trained_network(X, y, n_epochs=25):
     print("Building network...")
 
     model = Sequential()
     model.add(LSTM(128, input_shape=(30, 3), return_sequences=True))
     model.add(Dropout(0.2))
     model.add(LSTM(128, input_shape=(30, 3), return_sequences=False))
-    model.add(Dropout(0.5))
+    model.add(Dropout(0.2))
     model.add(Dense(3))
-    model.add(Activation('softmax'))
+    model.add(Activation('linear'))
 
-    optimizer = RMSprop(lr=0.001)
-    model.compile(loss='categorical_crossentropy', optimizer=optimizer)
+    optimizer = RMSprop(lr=0.005)
+    model.compile(loss='mse', optimizer=optimizer)
     print("Network built.")
     print("Training network...")
-    model.fit(X, y, batch_size=300, epochs=500, verbose=1)
-    print("Training complete.")
+    model.fit(X, y, batch_size=128, epochs=n_epochs, verbose=1)
+    print("Network trained.")
     return model
+
 
 """
 Uses the network model to create a seed prediction.
@@ -53,11 +54,13 @@ seed: the seed used for prediction
 max_t: the longest note time span (used for scaling)
 @:return the seed prediction
 """
-def predict(model, seed, max_t):
+def predict(model, seed, max_t, n_epochs = 25):
     prediction = list()
-    _seed = np.expand_dims(seed, axis=0)
-    for i in range(3000):
+    _seed = seed
+    _seed = np.expand_dims(_seed, axis=0)
+    for i in range(int(n_epochs * 7.5)):
         predictions = model.predict(_seed)
+        print(predictions)
         _seed = np.squeeze(_seed)
         _seed = np.concatenate((_seed, predictions))
         _seed = _seed[1:]

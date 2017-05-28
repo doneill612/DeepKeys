@@ -96,4 +96,4 @@ def save_new_song(prediction, generation):
         message.time = time
         track.append(message)
 
-    midi.save('samples/sample_song_generation{}.mid'.format(generation))
+    midi.save('output/sample_song_generation{}.mid'.format(generation))
