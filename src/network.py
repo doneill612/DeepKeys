@@ -7,19 +7,10 @@ import numpy as np
 
 """
 Builds, trains, and saves a sequential LSTM network.
-Each LSTM layer is followed by a dropout - 0.2 between the two LSTMs, 0.5 between the second LSTM and Dense layer
-Layers use softmax activation and the loss is a categorical cross-entropy function.
-
-Network hyperparameters:
-    LSTM layer neurons  : 128
-    Dense layer neurons : 3
-
-Training hyperparameters:
-    Batch size      : 300
-    Training epochs : 500
 
 X: training data
 y: labels
+n_epochs: epochs of training
 
 @:return the trained neural network
 
@@ -51,11 +42,25 @@ Loads a trained model with the name model_name
 model_name: the name of the h5 model (not including path - path is constructed)
 @:return the saved model
 """
-def get_trained_network(model_name):
+def get_trained_network(file):
     print("Loading model...")
-    path = "savedmodels/{}.h5".format(model_name)
-    model = load_model(path)
+    model = load_model(file)
     print("Model loaded!")
+    return model
+
+"""
+Retrains an existing model on new data and saves it.
+
+X: training data
+y: labels
+n_epochs: epochs of training
+@:return the updated model
+"""
+def update_network(model, X, y, n_epochs):
+    print("Retraining...")
+    model.fit(X, y, batch_size=128, epochs=n_epochs, verbose=1)
+    model.save('savedmodels/model_{}_epochs_111_update.h5'.format(n_epochs))
+    print("Done. Model saved.")
     return model
 
 """
