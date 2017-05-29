@@ -1,7 +1,6 @@
-from keras.models import Sequential
+from keras.models import Sequential, load_model
 from keras.optimizers import RMSprop
 from keras.layers import LSTM, Dense, Activation, Dropout
-
 import numpy as np
 
 
@@ -46,6 +45,18 @@ def build_trained_network(X, y, n_epochs=25):
     print("Saved.")
     return model
 
+"""
+Loads a trained model with the name model_name
+
+model_name: the name of the h5 model (not including path - path is constructed)
+@:return the saved model
+"""
+def get_trained_network(model_name):
+    print("Loading model...")
+    path = "savedmodels/{}.h5".format(model_name)
+    model = load_model(path)
+    print("Model loaded!")
+    return model
 
 """
 Uses the network model to create a seed prediction.
@@ -62,7 +73,7 @@ def predict(model, seed, max_t, n_epochs = 25):
     prediction = list()
     _seed = seed
     _seed = np.expand_dims(_seed, axis=0)
-    for i in range(int(n_epochs * 7.5)):
+    for i in range(int(n_epochs * 7.5) if int(n_epochs * 7.5) < 5000 else 5000):
         predictions = model.predict(_seed)
         print(predictions)
         _seed = np.squeeze(_seed)

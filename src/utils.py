@@ -122,3 +122,4 @@ def scale_song(path, scale):
     new_score = score.scaleOffsets(scale).scaleDurations(scale)
     new_score.write('midi', path)
     print("Done!")
+
