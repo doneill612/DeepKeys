@@ -39,5 +39,5 @@ There is much work to be done, but features include:
 Short-term plans:
 <ul>
 <li>Experiment with network model (change hyperparameters, learning rate, layer structure, etc.)</li>
-<li>Implement weight saving in order to facilitate training and keep track of training checkpoints</li>
+<li>Implement <strike>weight saving</strike> (done) in order to facilitate training and keep track of training checkpoints</li>
 </ul>
