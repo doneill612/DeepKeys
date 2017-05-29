@@ -27,5 +27,4 @@ prediction = network.predict(model, seed, max_t, n_epochs=3600)
 
 file_name = 'sample_song_3600_epochs'
 
-file_path = utils.save_new_song(prediction, file_name)
-utils.scale_song(file_path, 1.5)
+utils.save_new_song(prediction, file_name)
